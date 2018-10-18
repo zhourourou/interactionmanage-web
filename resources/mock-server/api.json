@@ -1,0 +1,395 @@
+{
+    "登入": [{
+            "url": "/portal/login",
+            "desc": "用户登入",
+            "mock": true,
+            "res": {
+                "code": 0,
+                "msg": "xxxx",
+                "data": {
+                    "username": "flyingzl@migu.cn",
+                    "sessionId":"vlfyjfkhglhglihuigylvbhjbjgvhj"
+                }
+            }
+        },
+        {
+            "url": "/cpa/logout.api",
+            "desc": "用户登出",
+            "mock": true,
+            "res": {
+                "code": 0,
+                "msg": ""
+            }
+        }
+    ],
+
+
+    "UEM": [{
+            "url": "/cpa/queryApp.api",
+            "desc": "获取应用列表",
+            "mock": true,
+            "res": {
+                "code": 0,
+                "data": [
+                    {"appname": "咪咕音乐", "appid":1},
+                    {"appname": "咪咕阅读", "appid":2},
+                    {"appname": "咪咕圈圈", "appid":3},
+                    {"appname": "咪咕游戏", "appid":4}
+                ]
+            }
+        },
+        {
+            "url": "/cpa/queryData.api",
+            "desc": "查询数据接口",
+            "mock": true,
+            "res": {
+                "code": 0,
+                "data": {
+                    "currpageno": 1,
+                    "total": 32,
+                    "result|10": [{
+                        "imei": "@natural()",
+                        "color": "@color()",
+                        "account": "@string(4,10)",
+                        "accounttype": "@cword(4)",
+                        "eventid": "@pick(['User_Login','user_switch','user_quit', 'somethingUnkown', 'user_download_music'])",
+                        "opttime": "@date('yyyy-MM-dd HH:mm:ss')",
+                        "id|+1": 1,
+                        "e_id|+1": 1
+                    }]
+                }
+            }
+        }
+
+    ],
+
+
+    "权限管理":[
+        {
+            "url": "/portal/user/list",
+            "desc": "查询用户列表",
+            "mock": true,
+            "res": {
+                "code": 0,
+                "data": {
+                    "pageNo": 1,
+                    "pageSize": 10,
+                    "total": 32,
+                    "result|10": [{
+                        "uid": "@natural()",
+                        "account": "@string(4,10)",
+                        "username": "@word(4)",
+                        "status": "@pick(1,2,3)",
+                        "company": "@cword(4)",
+                        "department": "@cword(4)",
+                        "phone|+1": "13541308537",
+                        "sex": "@pick(0,1)",
+                        "isSystem": 0
+                    }]
+                }
+            }
+        }
+    ],
+   "商品":[
+    {
+           "url": "/portal/product/pro/queryByProdcutId",
+           "desc": "查询商品信息",
+           "mock": true,
+           "res": {
+               "code": 0,
+               "data": {
+                   "brandCnName":"@string(10)",
+                   "brandId": "@string(32)",
+                   "firtCateId": "@string(32)",
+                   "secondCateId": "@string(32)",
+                   "thirdCateId": "@string(32)",
+                   "productId": "@string(32)",
+                   "productName":"@string(10)",
+                   "productInfo":"@string(10)",
+                   "productDetails":"@string(10)"
+               }
+           }
+       },
+      {
+        "url": "/portal/product/pro/querySkuListByProductId",
+        "desc": "sku查询",
+        "mock": true,
+        "code":0,
+        "res":{
+            "code": 0,
+            "msg": "success",
+            "data|5":[{
+                        "updateTime": "@cword(6,20)",
+                        "barCode": "@cword(6,20)",
+                        "productId":"@id",
+                        "skuName":"@cword(6,20)",
+                        "secondCateId":"@natural(10,1000)",
+                        "cateIdFirst":"@natural(10,1000)",
+                        "cost":"@natural(10,1000)",
+                        "createTime":"@natural(10,1000)",
+                        "price":"@pick(0,1)",
+                        "brandId": 23,
+                        "unitId": 32,
+                        "preferentialPrice": 23.12,
+                        "skuId": 111,
+                        "status": 0,
+                        "skuAttrs":[
+                          {
+                            "attrName":"颜色",
+                            "attrValue":"红色",
+                            "attrId":"1",
+                            "attrValueId":"1"
+                          },
+                          {
+                            "attrName":"长度",
+                            "attrValue":"180cm",
+                            "attrId":"3",
+                            "attrValueId":"3"
+                          }
+                        ]
+                    }]
+        }
+    },
+    {
+        "url": "/portal/product/pro/query",
+        "desc": "查询商品列表",
+        "mock": true,
+        "res": {
+            "code": 0,
+            "data": {
+                "pageNo": 1,
+                "pageSize": 10,
+                "total": 32,
+                "result|10": [{
+                    "brandCnName": "@cword(6,20)",
+                    "firtCateId": "@id",
+                    "secondCateId": "@id",
+                    "thirdCateId": "@nid",
+                    "productId": "@id",
+                    "productName": "@cword(10,20)"
+                }]
+            }
+        }
+    },
+
+   {
+       "url": "/portal/product/newquery",
+       "desc": "查询用户列表",
+       "mock": true,
+       "res": {
+           "code": 0,
+           "data": {
+               "pageNo": 1,
+               "pageSize": 10,
+               "total": 32,
+               "result|10": [{
+                   "id": "@string(32)",
+                   "spucode": "@string(4,10)",
+                   "skucode": "",
+                   "name": "@cword(4,20)",
+                   "pingpai": "@cword(10)",
+                   "guige": "@cword(10)",
+                   "kucun": "@integer(1,1000)",
+                   "linshoujia": "@integer(10,1000)",
+                   "chengbenjia": "@integer(10,1000)"
+               }]
+           }
+       }
+   },
+   {
+       "url": "/portal/oneproduct/newquery",
+       "desc": "查询用户列表",
+       "mock": true,
+       "res": {
+           "code": 0,
+           "data": {
+               "pageNo": 1,
+               "pageSize": 10,
+               "total": 32,
+               "result|5": [{
+                   "id": "@string(32)",
+                   "skucode": "@string(10)",
+                   "name": "@cword(4,20)",
+                   "pingpai": "@cword(10)",
+                   "guige": "@cword(10)",
+                   "kucun": "@integer(1,1000)",
+                   "linshoujia": "@integer(10,1000)",
+                   "chengbenjia": "@integer(10,1000)"
+               }]
+           }
+       }
+   },
+
+
+    {
+        "url": "/portal/product/querySkuListByProductId",
+        "desc": "查询用",
+        "mock": true,
+        "res":{
+            "code":0,
+            "data":{
+                "result|10":[
+                    {
+                        "productId":"@natural()",
+                        "skuId":"@natural()",
+                        "skuName":"@word(4)",
+                        "skuPrice":"@string(4,6)",
+                        "skuCost":"@string(3,5)",
+                        "skuStatus":"@pick(0,1)",
+                        "skuAttrs":[
+                            {
+                                "attrName":"cword(4)",
+                                "attrValue":"cword(4)"
+                            },
+                            {
+                                "attrName":"cword(4)",
+                                "attrValue":"cword(4)"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+
+
+
+       {
+          "url": "/portal/product/brand/query",
+          "desc": "查询所有品牌",
+          "mock": true,
+          "res": {
+              "code": 0,
+              "data|5": [{
+                  "brandCnName": "@name(middle)",
+                  "brandEnName": "@cfirst(5)",
+                  "brandId": "@string(32)"
+              }]
+          }
+      },
+
+      {
+          "url": "/protal/product/cate/query",
+          "desc": "查询类目",
+          "mock": true,
+          "res": {
+              "code": 0,
+              "data": {
+                  "pageNo": 1,
+                  "pageSize": 10,
+                  "total": 32,
+                  "result|5": [{
+                      "cateName": "@name(middle)",
+                      "cateId": "@cfirst(5)",
+                      "parentCateId": "@string(32)",
+                      "level":"@number()",
+                      "status":"@pick(0,1,2)"
+                  }]
+              }
+          }
+      }
+
+
+],
+
+    "计量单位管理":[
+        {
+            "url": "/protal/unit/query",
+            "desc": "查询计量单位列表",
+            "mock": true,
+            "res": {
+                "code": 0,
+                "data": {
+                    "pageNo": 1,
+                     "pageSize": 10,
+                     "total": 32,
+                    "result|10": [{
+                        "unitId": "@natural()",
+                        "basicUnitName":"@string(1,10)",
+                        "basicUnitEntity":"@string(1,10)",
+                        "basicUnitValue":"@string(1,10)",
+                        "list|10":[{
+                            "unitId":"@natural()",
+                            "unitEntity":"@string(1,10)",
+                            "unitValue":"@string(1,10)"
+                        }]
+                    }]
+                }
+            }
+        }
+    ],
+
+"调拨管理子模块": [
+{
+    "url": "/warehouse/getTransferList",
+    "desc": "获取调拨列表",
+    "mock": true,
+    "res": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+            "pageNo": 1,
+            "pageSize": 10,
+            "total": 100,
+            "result|10": [
+                {
+                    "transferId": "@id",
+                    "productName": "@cword(10,20)",
+                    "skuCode": "@string(10,20)",
+                    "to": "@cword(10,20)",
+                    "from": "@cword(10,20)",
+                    "status": "正常"
+                }
+            ]
+        }
+    }
+}
+],
+"设置模块": [
+{
+    "url": "/warehouse/getWarehouseList",
+    "desc": "获取仓库列表",
+    "mock": true,
+    "res": {
+        "code": 0,
+        "msg": "success",
+        "data":{
+            "pageNo": 1,
+            "pageSize": 10,
+            "total": 32,
+            "result|10": [{
+                "warehouseId": "@id(32)",
+                "warehouseName":"@cword(10,20)",
+                "warehouseAddress":"@cword(10,20)",
+                "relationMen":"@cname(2,3)",
+                "phone": "@natural(11)",
+                "status|1": ["启用","未用"] 
+            }]            
+        }
+    }
+},
+{
+    "url": "/warehouse/createwarehouse",
+    "desc": "创建仓库",
+    "mock": true,
+    "res": {
+        "code": 0,
+        "msg": "success",
+        "data": {
+            "code": 0
+        }
+    }
+}
+],
+
+    "default": [{
+        "url": "/",
+        "desc": "Index",
+        "mock": true,
+        "res": {
+            "code": 0,
+            "msg": "Hi, this is mock server.",
+            "data": ""
+        }
+    }]
+}

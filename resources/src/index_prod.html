@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<script>
+    window.config = {
+        // <%=htmlWebpackPlugin.options.env %>API
+        context: "",
+        interaction: "<%=htmlWebpackPlugin.options.interaction %>",
+        version: "<%=htmlWebpackPlugin.options.version %>",
+    }
+</script>
+
+
+<div id="root"></div>
+<%=htmlWebpackPlugin.files.webpackManifest%>
+</body>
+</html>

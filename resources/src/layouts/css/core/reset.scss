@@ -1,0 +1,43 @@
+/** element-ui的对话框会给body增加样式，导致导航栏右侧出现空白 **/
+body {
+    padding-right: 0 !important;
+    background-color: #f5f5f5;
+    color: #333;
+
+    .el-form--label-top .el-form-item__label {
+        padding-bottom: 0;
+    }
+
+    .el-button {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .el-form-item.is-success {
+        .el-input__inner {
+            border-color: #dcdfe6;
+        }
+    }
+
+    .el-date-editor.el-input, .el-date-editor.el-input__inner {
+        width: 100%;
+    }
+
+    .el-color-picker__trigger {
+        border: none;
+    }
+
+    .el-tooltip__popper {
+        max-width: 200px;
+    }
+
+    // 修正表格表头有margin-bottom的问题
+    .el-table__header-wrapper {
+        table {
+            margin-bottom: 0;
+        }
+    }
+    .el-radio__inner{
+        border-radius: 0;
+    }
+}
